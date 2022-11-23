@@ -22,6 +22,15 @@
       "es2018", 
       "dom"
     ],
+    "paths": {
+        "@appconfig": ["src/environments/environment"],
+        "@entities/*": ["src/app/entities/*"],
+        "@enums/*": ["src/app/enums/*"],
+        "@services/*": ["src/app/services/*"],
+        "@guards/*": ["src/app/guards/*"],
+        "@utils/*": ["src/app/utils/*"],
+        "@components/*": ["src/app/components/*"]
+    },
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

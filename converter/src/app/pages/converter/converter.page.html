@@ -1,9 +1,52 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>converter</ion-title>
+    <ion-title>Converter</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="stacked">
+              Enter the amount.
+            </ion-label>
+            <ion-input [(ngModel)]="conversionService.userValue">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-select interface="popover" placeholder="Unit" value="{{settingsService.defaultUnit}}" [(ngModel)]="conversionService.userUnit">
+              <ion-select-option *ngFor="let item of conversionService.units" value="{{item}}">{{item}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list *ngIf="conversionService.results$ | async as results">
+    <div *ngFor="let item of results">
+      <ion-item>
+        <ion-label>
+          {{item.type}}
+        </ion-label>
+        <ion-label>
+          {{item.value}}
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-list>
+    <ion-item style="border-radius: 20px; margin: 15px;" color="primary" button (click)="conversionService.convert($event)">
+      <ion-label style="text-align: center;">
+        Convert
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-footer>

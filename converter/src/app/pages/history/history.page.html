@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h1>Recent conversions</h1>
+      </ion-label>
+    </ion-item>
+    <div *ngFor="let item of history; index as i">
+      <ion-item button (click)="openModal(i)">
+        <ion-label>
+          {{item.unit}}
+        </ion-label>
+        <ion-label>
+          {{item.date}}
+        </ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

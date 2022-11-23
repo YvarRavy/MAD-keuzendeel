@@ -5,12 +5,12 @@ import { MainPage } from './main.page';
 
 const routes: Routes = [
   {
-    path: 'main',
+    path: '',
     component: MainPage,
     children: [
       {
-        path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+        path: 'history',
+        loadChildren: () => import('../history/history.module').then(m => m.HistoryPageModule)
       },
       {
         path: 'converter',
@@ -22,14 +22,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/converter',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/converter',
     pathMatch: 'full'
   }
 ];

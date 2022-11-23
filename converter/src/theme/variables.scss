@@ -82,6 +82,7 @@
    * -------------------------------------------
    */
 
+  
   body[color-theme-dark] {
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
@@ -196,7 +197,7 @@
    * -------------------------------------------
    */
 
-  .md body {
+  .md body[color-theme-dark] {
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 
