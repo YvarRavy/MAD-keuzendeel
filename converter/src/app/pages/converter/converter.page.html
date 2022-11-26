@@ -29,7 +29,7 @@
   </ion-list>
   <ion-list *ngIf="conversionService.results$ | async as results">
     <div *ngFor="let item of results">
-      <ion-item>
+      <ion-item (click)="copyToClipboard(item.value)">
         <ion-label>
           <ion-chip>{{item.type}}</ion-chip>
         </ion-label>
