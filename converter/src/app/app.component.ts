@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { LocalService } from '@services/local.service';
 import { SettingsService } from '@services/settings.service';
 
 @Component({
@@ -8,5 +8,13 @@ import { SettingsService } from '@services/settings.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private settingsService: SettingsService) {}
+  constructor(
+    private settingsService: SettingsService,
+    private localService: LocalService
+    ) {}
+
+    async ngOnInit() {
+      await this.localService.init();
+      await this.settingsService.init();
+    }
 }

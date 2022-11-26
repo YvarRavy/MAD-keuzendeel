@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HistoryService } from '@services/history.service';
 import { ModalComponent } from './modal/modal.component';
+import { History } from '@entities/history';
+import { formatNumber } from '@angular/common';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-history',
@@ -15,25 +18,29 @@ export class HistoryPage implements OnInit {
     private modalController: ModalController
   ) { }
 
-  public history: Array<any> = [];
+  public history: History[] = [];
 
   ngOnInit() { }
 
   ionViewWillEnter() {
-    this.history = this.historyService.getHistory();
+    from(this.historyService.getHistory()).subscribe(items => {
+      this.history = items;
+    })
   }
 
   public async openModal(index: Number)
   {
-    let item = this.historyService.getHistoryItem(Number(index));
-    const modal = await this.modalController.create({
-      component: ModalComponent,
-      componentProps: {
-        item: item
-      },
-      cssClass: "",
-      swipeToClose: true, // only works for ios
+//    const item: History = this.historyService.getHistoryItem(Number(index));
+    from(this.historyService.getHistoryItem(Number(index))).subscribe(async item => {
+        const modal = await this.modalController.create({
+          component: ModalComponent,
+          componentProps: {
+            item: item[0]
+          },
+          cssClass: "",
+          swipeToClose: true, // only works for ios
+        });
+        await modal.present();
     });
-    await modal.present();
   }
 }

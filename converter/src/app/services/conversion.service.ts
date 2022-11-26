@@ -11,12 +11,6 @@ import { History } from '@entities/history';
 })
 export class ConversionService {
 
-  constructor(
-    public settingsService: SettingsService,
-    public toastController: ToastController,
-    private historyService: HistoryService
-    ) { }
-
   public userValue: string = "";
   public userUnit: string = this.settingsService.getUnit();
 
@@ -63,11 +57,11 @@ export class ConversionService {
     ],
   }
 
-  public setUserUnit(event: any)
-  {
-    console.log(event)
-    return;
-  }
+  constructor(
+    public settingsService: SettingsService,
+    public toastController: ToastController,
+    private historyService: HistoryService
+  ) { }
 
   public convert(event: any)
   {
@@ -92,6 +86,7 @@ export class ConversionService {
     }
     this.historyService.setHistoryItem(history);
     this.results$ = of(output);
+    return
   }
 
   public async showToast(message: string)
@@ -109,7 +104,7 @@ export class ConversionService {
 
   private getDate(): string
   {
-    var date = new Date();
+    const date = new Date();
     var current_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     var current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
     var date_time = current_date + " " + current_time;	

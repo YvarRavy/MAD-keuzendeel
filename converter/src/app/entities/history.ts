@@ -2,5 +2,5 @@ export interface History {
     date: string,
     unit: string,
     value: string,
-    conversion: Array<any>,
+    conversion: Array<Object>,
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Converter</ion-title>
+    <ion-title>Weight Converter</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,7 +19,7 @@
         </ion-col>
         <ion-col size="4">
           <ion-item>
-            <ion-select interface="popover" placeholder="Unit" value="{{settingsService.defaultUnit}}" [(ngModel)]="conversionService.userUnit">
+            <ion-select interface="popover" placeholder="Unit" value="{{settingsService.settings.defaultUnit}}" [(ngModel)]="conversionService.userUnit">
               <ion-select-option *ngFor="let item of conversionService.units" value="{{item}}">{{item}}</ion-select-option>
             </ion-select>
           </ion-item>

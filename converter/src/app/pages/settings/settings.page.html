@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +11,24 @@
       <ion-label>
         Toggle Dark Theme
       </ion-label>
-      <ion-toggle id="themeToggle" slot="end" [checked]="settingsService.darkTheme" (ionChange)="settingsService.toggleTheme($event)"></ion-toggle>
+      <ion-toggle id="themeToggle" slot="end" [checked]="settingsService.settings.darkTheme" (ionChange)="settingsService.toggleTheme($event)"></ion-toggle>
     </ion-item>
     <ion-item lines="full">
       <ion-icon slot="start" name="barbell-outline"></ion-icon>
       <ion-label>
         Default unit 
       </ion-label>
-      <ion-select interface="popover" placeholder="Select Unit" value="{{settingsService.defaultUnit}}" (ionChange)="settingsService.setDefaultUnit($event)">
+      <ion-select interface="popover" placeholder="Select Unit" value="{{settingsService.settings.defaultUnit}}" (ionChange)="settingsService.setDefaultUnit($event)">
         <ion-select-option *ngFor="let item of conversionService.units" value="{{item}}">{{item}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon slot="start" name="barbell-outline"></ion-icon>
+      <ion-label>
+        History limit 
+      </ion-label>
+      <ion-select interface="popover" placeholder="Select amount" value="{{settingsService.settings.historyLimit}}" (ionChange)="settingsService.setHistoryLimit($event)">
+        <ion-select-option *ngFor="let number of [1,2,3,4,5]" value="{{number * 10}}">{{number * 10}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
