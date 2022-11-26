@@ -10,13 +10,13 @@
   <ion-list style="height: 100%;">
     <ion-item class="ion-no-padding">
       <ion-label style="padding-left:5px;">
-        <ion-chip>Original unit</ion-chip> {{item.unit}}
+        <ion-chip color="primary">{{item.unit}}</ion-chip> 
       </ion-label>
       <ion-label>{{item.value}}</ion-label>
     </ion-item>
     <div *ngFor="let conversion of item.conversion">
       <ion-item class="ion-no-padding">
-        <ion-label style="padding-left:5px;">{{conversion.type}} </ion-label>
+        <ion-label style="padding-left:5px;"><ion-chip>{{conversion.type}}</ion-chip> </ion-label>
         <ion-label>{{conversion.value}}</ion-label>
       </ion-item>
     </div>

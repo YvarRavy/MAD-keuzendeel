@@ -24,13 +24,12 @@ export class HistoryPage implements OnInit {
 
   ionViewWillEnter() {
     from(this.historyService.getHistory()).subscribe(items => {
-      this.history = items;
+      this.history = items ?? [];
     })
   }
 
   public async openModal(index: Number)
   {
-//    const item: History = this.historyService.getHistoryItem(Number(index));
     from(this.historyService.getHistoryItem(Number(index))).subscribe(async item => {
         const modal = await this.modalController.create({
           component: ModalComponent,
@@ -38,7 +37,7 @@ export class HistoryPage implements OnInit {
             item: item[0]
           },
           cssClass: "",
-          swipeToClose: true, // only works for ios
+          canDismiss: true, // only works for ios
         });
         await modal.present();
     });

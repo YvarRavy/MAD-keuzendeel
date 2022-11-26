@@ -5,14 +5,17 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="history.length == 0">
-    test
-  </div>
+  <ion-list *ngIf="history.length == 0" id="empty-state">
+    <ion-icon size="large" name="time-outline"></ion-icon>
+    <ion-label>
+      Seems empty😀
+    </ion-label>
+  </ion-list>
   <ion-list>
     <div *ngFor="let item of history; index as i">
       <ion-item button (click)="openModal(i)">
         <ion-label>
-          {{item.unit}}
+          <ion-chip>{{item.unit}}</ion-chip>
         </ion-label>
         <ion-label>
           {{item.date}}
