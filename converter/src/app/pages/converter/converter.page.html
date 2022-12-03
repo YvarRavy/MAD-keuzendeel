@@ -11,14 +11,17 @@
         <ion-col size="8">
           <ion-item>
             <ion-label position="stacked">
-              Enter the amount.
+              Enter amount
             </ion-label>
-            <ion-input [(ngModel)]="conversionService.userValue">
+            <ion-input (ionChange)="conversionService.convert($event)" [(ngModel)]="conversionService.userValue">
             </ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="4">
           <ion-item>
+            <ion-label position="stacked">
+              Unit
+            </ion-label>
             <ion-select interface="popover" placeholder="Unit" value="{{settingsService.settings.defaultUnit}}" [(ngModel)]="conversionService.userUnit">
               <ion-select-option *ngFor="let item of conversionService.units" value="{{item}}">{{item}}</ion-select-option>
             </ion-select>
@@ -41,13 +44,3 @@
     </div>
   </ion-list>
 </ion-content>
-
-<ion-footer>
-  <ion-list>
-    <ion-item style="border-radius: 20px; margin: 15px;" color="primary" button (click)="conversionService.convert($event)">
-      <ion-label style="text-align: center;">
-        Convert
-      </ion-label>
-    </ion-item>
-  </ion-list>
-</ion-footer>
